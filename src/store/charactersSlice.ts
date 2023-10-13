@@ -6,7 +6,7 @@ import { RootState } from "."
 interface CharactersState {
   currentPage: number
   results: {
-    [key: number]: { data: []; info: { next: string; prev: string } }
+    [key: number]: { data: []; info: { next?: string; prev?: string } }
   } | null
   status: string
   error: string

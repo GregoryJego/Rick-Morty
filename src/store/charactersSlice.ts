@@ -5,12 +5,10 @@ import { RootState } from "."
 
 interface CharactersState {
   currentPage: number
-  results: { [key: number]: { data: []; info: {} } } | null
-  status:
-    | storeStatus.IDLE
-    | storeStatus.LOADING
-    | storeStatus.SUCCEEDED
-    | storeStatus.FAILED
+  results: {
+    [key: number]: { data: []; info: { next: string; prev: string } }
+  } | null
+  status: string
   error: string
 }
 
@@ -22,29 +20,29 @@ const initialState: CharactersState = {
 }
 
 // The function below is async and fetchs the data from Rick and Morty API
-export const getCharactersAsync = createAsyncThunk(
-  "characters/fetchCharacters",
-  async (page: number, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        `${config.apiURL}${page}`, // Method GET is implicit
+export const getCharactersAsync = createAsyncThunk<
+  { data: []; info: {}; page: number },
+  number
+>("characters/fetchCharacters", async (page: number, { rejectWithValue }) => {
+  try {
+    const response = await fetch(
+      `${config.apiURL}${page}`, // Method GET is implicit
+    )
+    // There is an error
+    if (!response.ok) {
+      return rejectWithValue(
+        response.status ? `Error: status ${response.status}` : null,
       )
-      // There is an error
-      if (!response.ok) {
-        return rejectWithValue(
-          response.status ? `Error: status ${response.status}` : null,
-        )
-      }
-      // We got the results
-      const allResults = await response.json()
-      const { results, info } = allResults
-      return { data: results, info, page }
-    } catch (error) {
-      // There is an error
-      return rejectWithValue(error instanceof Error ? error?.message : null)
     }
-  },
-)
+    // We got the results
+    const allResults = await response.json()
+    const { results, info } = allResults
+    return { data: results, info, page }
+  } catch (error) {
+    // There is an error
+    return rejectWithValue(error instanceof Error ? error?.message : null)
+  }
+})
 
 export const charactersSlice = createSlice({
   name: "characters",

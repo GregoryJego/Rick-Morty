@@ -7,7 +7,7 @@ import type { RootState } from "./index"
 export const listenerMiddleware = createListenerMiddleware()
 listenerMiddleware.startListening({
   matcher: isAnyOf(setCharactersCurrentPage, getCharactersAsync.fulfilled),
-  effect: (action, listenerApi) =>
+  effect: (_, listenerApi) =>
     localStorage.setItem(
       "characters-currentPage",
       JSON.stringify(

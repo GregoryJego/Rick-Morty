@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import charactersReducer from "./charactersSlice"
-import { listenerMiddleware } from "./middleware"
 import { storeStatus } from "../constants"
+import { listenerMiddleware } from "./middleware"
 
 const currentPageState = JSON.parse(
-  localStorage.getItem("characters-currentPage") || "1",
+  localStorage.getItem("characters-currentPage") || "1", // by default, the page should be page 1
 )
 
 export const store = configureStore({
@@ -19,10 +19,8 @@ export const store = configureStore({
   reducer: {
     characters: charactersReducer,
   },
-  middleware: (getDefaultMiddleware) => [
-    ...getDefaultMiddleware(),
-    listenerMiddleware.middleware,
-  ],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(listenerMiddleware.middleware),
 })
 
 export type AppDispatch = typeof store.dispatch

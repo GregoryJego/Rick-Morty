@@ -1,11 +1,4 @@
-interface storeStatusInterface {
-  IDLE: string
-  LOADING: string
-  SUCCEEDED: string
-  FAILED: string
-}
-
-export const storeStatus: storeStatusInterface = {
+export const storeStatus = {
   IDLE: "idle",
   LOADING: "loading",
   SUCCEEDED: "succeeded",

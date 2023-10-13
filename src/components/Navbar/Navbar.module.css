@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    min-height: 50px;
+    background-color: rgb(19,22,26);
+    padding: 0 30px
+}
+
+.link {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    transition: all 0.4s;
+    position: relative;
+}
+
+.activeLink{
+    color: rgba(255, 255, 255, 1);
+    font-size: 17px;
+    transition: all 0.4s;
+}
+
+.link:hover,
+.link:focus {
+    color: rgba(255, 255, 255, 1);
+}
+
+.link::after{
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: rgb(0,183,255);
+    position: absolute;
+    left:0;
+    bottom:-6px;
+    transition: all 0.2s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.link:hover::after{
+    opacity:1
+}
+
+
+

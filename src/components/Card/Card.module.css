@@ -1,0 +1,51 @@
+  .container {
+    margin: 10px;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+  }
+
+  .fadein .name, 
+  .fadein .img{
+    opacity:0.5;
+    transition: 1s ease;
+    }
+    
+    .fadein:hover .name,
+    .fadein:hover .img{
+    opacity:1;
+    transition: 1s ease;
+    }
+
+    .loading {
+      background-color: whitesmoke;
+      height: 200px;
+      width: 200px;
+      border-radius: 10%;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .img {
+      box-sizing: content-box;
+      width: 100%;
+      border-radius: 10%;
+      cursor:pointer;
+      transition: all 0.2s;
+      }
+
+    .name{
+      background-color: black;
+      padding: 10px;
+      border-radius: 10%;
+      color: white;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      cursor:pointer
+    }
+
+ 

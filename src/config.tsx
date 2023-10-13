@@ -20,8 +20,8 @@ export const config: configProps = {
   nextStr: "NEXT ",
   prevStr: "PREV ",
   links: [
-    { name: "Home", path: "/" },
-    { name: "Characters", path: "/characters" },
+    { name: "Home", path: "/Rick-Morty/" },
+    { name: "Characters", path: "/Rick-Morty/characters" },
   ],
   homeTitleStr: "Do you know all the Rick and Morty characters?",
   homeDescriptionStr:

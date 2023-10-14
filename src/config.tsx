@@ -25,5 +25,5 @@ export const config: configProps = {
   ],
   homeTitleStr: "Do you know all the Rick and Morty characters?",
   homeDescriptionStr:
-    "Click on the Characters section to see all the characters from Rick and Morty TV Show.\r\nClick on a character to see its data in the console.",
+    "Click on the Characters section to see all the characters from Rick and Morty TV Show. Click on a character to see its data in the console.",
 }
